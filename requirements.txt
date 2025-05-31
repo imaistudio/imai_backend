@@ -1,0 +1,33 @@
+# API and Web Framework
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+httpx==0.25.1
+fal_client==0.1.0
+pillow_heif==0.16.0
+
+# AI and Machine Learning
+openai==1.82.1
+anthropic==0.5.0
+opencv-python==4.9.0.80
+
+# Image Processing
+pillow==10.1.0
+numpy==1.26.2
+cloudinary==1.37.0
+
+# Configuration and Environment
+python-dotenv==1.0.0
+pydantic==2.4.2
+pydantic_settings==2.2.1
+
+# Authentication and Security
+python-jose==3.3.0
+passlib==1.7.4
+bcrypt==4.0.1
+
+# Utilities
+requests==2.31.0
+aiofiles==23.2.1
+loguru==0.7.3 
+
