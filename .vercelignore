@@ -5,6 +5,10 @@ backup/
 temp/
 __pycache__/
 logs/
+src/
+app/
+tests/
+docs/
 
 # Exclude development files
 *.pyc
@@ -14,4 +18,31 @@ logs/
 env/
 venv/
 .env
-*.log 
+*.log
+.DS_Store
+*.md
+*.txt
+!requirements.txt
+!vercel.json
+
+# Exclude large data files
+*.csv
+*.json
+*.xml
+*.yaml
+*.yml
+*.db
+*.sqlite
+*.sqlite3
+*.pkl
+*.h5
+*.model
+*.bin
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.pb
+*.weights
+*.ckpt
+*.safetensors 
