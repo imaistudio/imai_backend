@@ -5,7 +5,6 @@ backup/
 temp/
 __pycache__/
 logs/
-src/
 app/
 tests/
 docs/
