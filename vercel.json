@@ -11,5 +11,9 @@
             "src": "/(.*)",
             "dest": "api/$1"
         }
-    ]
+    ],
+    "env": {
+        "PYTHONPATH": ".",
+        "LOG_LEVEL": "INFO"
+    }
 } 

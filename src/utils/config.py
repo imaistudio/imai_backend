@@ -57,12 +57,17 @@ class OutputConfig(BaseSettings):
 class LogConfig(BaseSettings):
     """Logging configuration settings."""
     log_level: str = Field('INFO', env='LOG_LEVEL')
-    log_file: Optional[Path] = Field(Path('./logs/app.log'), env='LOG_FILE')
+    log_file: Optional[Path] = Field(Path('/tmp/imai_logs/app.log'), env='LOG_FILE')
     
     @validator('log_file')
     def create_log_dir(cls, v: Optional[Path]) -> Optional[Path]:
         if v:
-            v.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                v.parent.mkdir(parents=True, exist_ok=True)
+            except OSError as e:
+                # If we can't create the directory, use /tmp which should be writable
+                v = Path('/tmp/imai_logs/app.log')
+                v.parent.mkdir(parents=True, exist_ok=True)
         return v
 
 class Settings(BaseSettings):
