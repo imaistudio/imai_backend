@@ -27,11 +27,16 @@ class ImageConfig(BaseSettings):
     """Image processing configuration settings."""
     max_image_size: int = Field(4096, env='MAX_IMAGE_SIZE')
     supported_formats: List[str] = Field(['jpg', 'jpeg', 'png', 'webp'], env='SUPPORTED_FORMATS')
-    temp_dir: Path = Field(Path('./temp'), env='TEMP_DIR')
+    temp_dir: Path = Field(Path('/tmp/imai_temp'), env='TEMP_DIR')
     
     @validator('temp_dir')
     def create_temp_dir(cls, v: Path) -> Path:
-        v.mkdir(parents=True, exist_ok=True)
+        try:
+            v.mkdir(parents=True, exist_ok=True)
+        except OSError as e:
+            # If we can't create the directory, use /tmp which should be writable
+            v = Path('/tmp/imai_temp')
+            v.mkdir(parents=True, exist_ok=True)
         return v
 
 class OutputConfig(BaseSettings):
