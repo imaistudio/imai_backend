@@ -1,0 +1,17 @@
+# Exclude large directories
+main_images/
+output/
+backup/
+temp/
+__pycache__/
+logs/
+
+# Exclude development files
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+*.log 

@@ -4,12 +4,11 @@ uvicorn==0.24.0
 python-multipart==0.0.6
 httpx==0.25.1
 fal_client==0.1.0
-pillow_heif==0.16.0
 
 # AI and Machine Learning
 openai==1.82.1
 anthropic==0.5.0
-opencv-python==4.9.0.80
+opencv-python-headless==4.9.0.80
 
 # Image Processing
 pillow==10.1.0
