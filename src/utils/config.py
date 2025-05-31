@@ -41,12 +41,17 @@ class ImageConfig(BaseSettings):
 
 class OutputConfig(BaseSettings):
     """Output configuration settings."""
-    output_dir: Path = Field(Path('./output'), env='OUTPUT_DIR')
-    backup_dir: Path = Field(Path('./backup'), env='BACKUP_DIR')
+    output_dir: Path = Field(Path('/tmp/imai_output'), env='OUTPUT_DIR')
+    backup_dir: Path = Field(Path('/tmp/imai_backup'), env='BACKUP_DIR')
     
     @validator('output_dir', 'backup_dir')
     def create_dirs(cls, v: Path) -> Path:
-        v.mkdir(parents=True, exist_ok=True)
+        try:
+            v.mkdir(parents=True, exist_ok=True)
+        except OSError as e:
+            # If we can't create the directory, use /tmp which should be writable
+            v = Path('/tmp/imai_output') if 'output' in str(v) else Path('/tmp/imai_backup')
+            v.mkdir(parents=True, exist_ok=True)
         return v
 
 class LogConfig(BaseSettings):
